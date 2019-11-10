@@ -1,0 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SegueCamera : MonoBehaviour
+{
+    
+    public Transform player;
+    private Vector3 NovaPosicaoCamera;    
+    void Update()
+    {
+        
+        NovaPosicaoCamera = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);        
+        transform.position = Vector3.Lerp(transform.position, NovaPosicaoCamera, 18f * Time.deltaTime);
+    }
+}
