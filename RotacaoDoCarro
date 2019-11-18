@@ -1,0 +1,43 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Carro : MonoBehaviour
+{
+    
+    public Rigidbody2D rb;
+    public float r1;
+    public float r2;
+   
+
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+       
+    void Update()   
+    {       
+          
+        
+        if (Input.GetKey(KeyCode.X))
+        {
+            transform.Rotate(new Vector3(0, 0, r2 * Time.deltaTime)); 
+        }
+        if (Input.GetKey(KeyCode.Z))
+        {
+            transform.Rotate(new Vector3(0, 0, -r1 * Time.deltaTime));
+        }
+    }
+  
+    [System.Obsolete]
+    private void OnTriggerEnter2D(Collider2D carro)
+    {
+        if (carro.gameObject.CompareTag("Vitoria"))
+        {
+            print("VITÓRIA!!");
+            Application.LoadLevel("gameOver");
+            
+        }
+    }
+}
